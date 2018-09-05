@@ -4,12 +4,13 @@
   "description": "Second implementation of blockchain using NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll",
     "dev-test": "nodemon dev-test"
   },
   "author": "Art Seven",
   "license": "ISC",
   "devDependencies": {
+    "jest": "^23.5.0",
     "nodemon": "^1.18.4"
   },
   "dependencies": {
