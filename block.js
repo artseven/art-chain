@@ -14,6 +14,10 @@ class Block {
 			Hash     : ${this.hash.substring(0, 10)}
 			Data     : ${this.data}`;
 	}
+	//static allows to use function directly without creating instance of a Block class
+	static genesis() {
+		return new this('Genesis time', '-----', '0x777777777777777', []);
+	}
 }
 
 module.exports = Block;
