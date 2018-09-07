@@ -18,5 +18,5 @@ describe('Blockchain', () => {
 		bc.addBlock(data);
 
 		expect(bc.chain[bc.chain.length - 1].data).toEqual(data);
-	})
+	});
 }); 
