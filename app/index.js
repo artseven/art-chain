@@ -9,3 +9,5 @@ const bc  = new Blockchain();
 app.get('/blocks', (req, res) => {
 	res.json(bc.chain);
 });
+
+app.listen(HTTP_PORT, () => console.log(`Listening on port ${HTTP_PORT}`));
