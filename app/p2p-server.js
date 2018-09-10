@@ -4,7 +4,7 @@ const P2P_PORT = process.env.P2P_PORT || 5001;
 //split env variable into array if present, otherwise empty array
 const peers = process.env.PEERS ? process.env.PEERS.split(',') : [];
 
-// $ HTTP_PORT = 3002 P2P_PORT = 5003 PEERS = ws://localhost:5001,ws://locahost:5002 
+// $env:HTTP_PORT=3002; $env:P2P_PORT=5002; $env:PEERS='ws://localhost:5001';
 
 class P2pServer {
 	constructor(blockchain) {
