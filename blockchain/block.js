@@ -36,11 +36,12 @@ class Block {
 		do {
 			nonce++;
 			timestamp = Date.now();
-			hash = Block.hash(timestamp, lastHash, data, nonce);
+			difficulty = Block.adjustDifficulty(lastBlock, timestamp);
+			hash = Block.hash(timestamp, lastHash, data, nonce, difficulty);
 			//while leading zeros don't satisfy the difficulty requirement
-		} while (hash.substring(0, DIFFICULTY) !== '0'.repeat(DIFFICULTY));
+		} while (hash.substring(0, difficulty) !== '0'.repeat(difficulty));
 
-		return new this(timestamp, lastHash, hash, data, nonce);
+		return new this(timestamp, lastHash, hash, data, nonce, difficulty);
 	}
 
 	static hash(timestamp, lastHash, data, nonce, difficulty) {
@@ -51,6 +52,13 @@ class Block {
 		//declaring and assigning to the same variables within this block object
 		const { timestamp, lastHash, data, nonce, difficulty } = block;
 		return Block.hash(timestamp, lastHash, data, nonce, difficulty);
+	}
+
+	static adjustDifficulty(lastBlock, currentTime) {
+		let { difficulty } = lastBlock;
+		// The ternary operator is an operator that takes three arguments. The first argument is a comparison argument, the second is the result upon a true comparison, and the third is the result upon a false comparison
+		difficulty = lastBlock.timestamp + MINE_RATE > currentTime ? difficulty + 1 : difficulty - 1;
+		return difficulty;
 	}
 }
 
